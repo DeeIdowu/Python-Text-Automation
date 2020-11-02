@@ -1,5 +1,6 @@
 """Step 1: [Text Messages] have a collection/array of preset messages sent via my_messages = [" ", ""]"""
 from twilio.rest import Client
+import schedule
 
 GOOD_MORNING_QUOTES = [
     "Good Morning Love!",
@@ -24,4 +25,6 @@ def send_message(quote):
                            body=quote)
 
 
-"""Step 3: [Every Morning] Use Library to Schedule a text to S/O @ Specific Time"""
+"""Step 3: [Every Morning] Use Library to Schedule a text to S/O 
+@ Specific Time via use of Schedule Library API & Randomly selecting quotes via random library"""
+schedule.every().day.at("6:30").do(send_message, GOOD_MORNING_QUOTES[0])
